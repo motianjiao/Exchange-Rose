@@ -1,6 +1,7 @@
 .nav-container {
-  background-color: #EEEEEE;
+  background-color: #800000;
   padding: 1px 0 1px 0;
+  margin-bottom: 3%;
 }
 
 .nav-container .nav-links li {
@@ -8,6 +9,11 @@
   font-family: monospace, sans-serif;
   display: inline-block;
   margin-right: 1%;
+  color: white;
+}
+
+.nav-container .nav-links li a {
+	color: white;
 }
 
 .nav-container .login-btn {

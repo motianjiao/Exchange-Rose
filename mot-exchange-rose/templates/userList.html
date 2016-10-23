@@ -1,0 +1,19 @@
+{% extends "templates/base_page.html" %} {% block content %}
+<link rel="stylesheet" href="/static/css/user_list.css"/>
+<div class="user-list-container">
+	{% for user in user_query %}
+	<a href="/profile/view?email={{user.email}}">
+		<div class="user-list-item-container">
+			<div class="panel-header">
+				<h3 class="user-full-name"> {{user.full_name}}</h3>
+			</div>
+			<div class="panel-body">
+				<div class="user-email"><b>Username: </b> {{user.email}}</div>
+				<div class="user-contact"><b>Contact: </b> {{user.contactInfo}}</div>
+			</div>
+		</div>
+	</a>
+	{% endfor %}
+</div>
+
+{% endblock %}

@@ -41,7 +41,7 @@ class LoggedInPages(RosefireHandler):
             values = {"user_email": email,
                       "logout_url": "/rosefire-logout",
                       "user_type" : "rose",
-                      "profile_url": "/profile?email=" + email
+                      "profile_url": "/profile/edit"
                      }
             print values
             self.update_values(email, values)
@@ -56,4 +56,24 @@ class LoggedInPages(RosefireHandler):
     
     def get_template(self):
         return "templates/main_page.html"
+    
+
+class BaseAction(RosefireHandler):
+    def post(self):
+        if "user_info" in self.session:
+            user_info = json.loads(self.session["user_info"])
+            email = user_info['email']
+        else:
+            raise "Fatal error: fire action when not logged in"
+        self.handle_post(email)
+    
+    def get(self):
+        self.post()  # Action handlers should not use get requests.
+
+
+    def handle_post(self, email):
+        # Subclasses must override this method to handle the requeest.
+        raise Exception("Subclass must implement handle_post!")
+
+
     

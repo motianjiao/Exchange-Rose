@@ -1,6 +1,41 @@
 {% extends "templates/base_page.html" %} {% block content %}
+<script src="/static/js/profile.js"></script>
+<script>
+	var profile = profile || {};
+	profile.userEmail = "{{user_email}}";
+</script>
+    <div class="profile-page">
+    <div class="personal-info-container">
+      <div class="image-name-container">
+        <img src="http://img.gawkerassets.com/img/194efol5vh9xdjpg/original.jpg" alt="" />
+        <input type="text" placeholder="Full Name" id="full-name"/>
+      </div>
+      <div class="personal-info-right-container">
+        <div class="label-input">
+          <div for="">Username</div>
+          <input type="text" id="username" disabled/>
+        </div>
+        <div class="label-input">
+          <div for="">Contact</div>
+          <input type="text" id="contact"/>
+        </div>
+        <div class="label-input">
+          <div for="">Address</div>
+          <input type="text" id="address"/>
+        </div>
+        <div class="label-input">
+          <div for="">Last Online</div>
+          <input type="text" id="last-logged-in" disabled/>
+        </div>
+      </div>
+    </div>
+    <div class="description-container">
+      <textarea placeholder="Any description" id="user-description"></textarea>
+    </div>
+    <div class="btn-container">
+    	<button class="action-btn">Update</button>
+    </div>
 
-  <div class="main-page-body">
-  </div>
+    </div>
 
 {% endblock %}
