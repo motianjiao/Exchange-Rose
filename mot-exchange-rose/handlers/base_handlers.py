@@ -35,6 +35,7 @@ class LoggedInPages(RosefireHandler):
     def handleRoseLoggedIn(self):
         template = main.jinja_env.get_template(self.get_template())
         values = {}
+        email = "";
         if "user_info" in self.session:
             user_info = json.loads(self.session["user_info"])
             email = user_info["email"]
@@ -42,9 +43,8 @@ class LoggedInPages(RosefireHandler):
                       "logout_url": "/rosefire-logout",
                       "user_type" : "rose",
                       "profile_url": "/profile/edit"
-                     }
-            print values
-            self.update_values(email, values)
+            }
+        self.update_values(email, values)
         self.response.out.write(template.render(values))
     
     def get_page_title(self):
