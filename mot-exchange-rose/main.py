@@ -47,7 +47,7 @@ ROSEFIRE_SECRET = 'XHVaootQIVTrvYe1xJtn'
 class MainPage(LoggedInPages):
     def update_values(self, email, values):
         values["route"] = "/"
-    
+
     def get_template(self):
         return "templates/main_page.html"
 
@@ -56,7 +56,7 @@ class UserListPage(LoggedInPages):
         values["route"] = "/profile/list"
         users = get_all_users();
         values["user_query"] = users;
-    
+
     def get_template(self):
         return "templates/userList.html"
 
@@ -85,11 +85,11 @@ class UpdateUserInfo(BaseAction):
         data["full_name"] = self.request.get("name")
         data["address"] = self.request.get("address")
         data["description"] = self.request.get("description")
-        self.response.headers['Content-Type'] = 'application/json'  
-        if update_user_info(user, data):      
+        self.response.headers['Content-Type'] = 'application/json'
+        if update_user_info(user, data):
             obj = {
                'success': True
-            }       
+            }
         else:
             obj = {
                 'success': False
@@ -100,7 +100,7 @@ class getUserInfo(webapp2.RequestHandler):
     def get(self):
         email = self.request.get('email');
         user = get_user_from_email(email);
-        data = {} 
+        data = {}
         if user:
             data["contact"] = user.contactInfo;
             data["address"] = user.address;
@@ -114,20 +114,42 @@ class getUserInfo(webapp2.RequestHandler):
             data["success"] = False
         self.response.out.write(json.dumps(data))
 
-class EditProfilePage(LoggedInPages):    
+class EditProfilePage(LoggedInPages):
     def get_template(self):
         return "templates/profile.html"
-    
+
     def update_values(self, email, values):
         values["route"] = "/profile/edit"
 
 class ViewProfilePage(LoggedInPages):
     def get_template(self):
         return "templates/profile.html"
-    
+
     def update_values(self, email, values):
         values["route"] = "/profile/view"
-        
+
+class InsertItemPage(LoggedInPages):
+    def get_page_title(self):
+        return "Password Keeper"
+
+    def update_values(self, email, values):
+     # Subclasses should override this method to add additional data for the Jinja template.
+        values["route"] = "/item/insert"
+
+    def get_template(self):
+        return "templates/item.html"
+
+class ViewItemPage(LoggedInPages):
+    def get_page_title(self):
+        return "Password Keeper"
+
+    def update_values(self, email, values):
+     # Subclasses should override this method to add additional data for the Jinja template.
+        values["route"] = "/item/view"
+
+    def get_template(self):
+        return "templates/item.html"
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('Hello world!')
@@ -152,9 +174,11 @@ app = webapp2.WSGIApplication([
     ('/', MainPage),
     ("/profile/edit", EditProfilePage),
     ("/profile/view", ViewProfilePage),
+    ("/item/insert", InsertItemPage),
+    ("/item/view", ViewItemPage),
     ("/profile/update", UpdateUserInfo),
     ("/profile/getInfo", getUserInfo),
     ("/profile/list", UserListPage),
     ("/rosefire-logout", LogoutHandler),
     ('/rosefire-login', RosefireLoginHandler)
-], debug=True, config = config)
+], debug=True, config=config)

@@ -1,0 +1,54 @@
+{% extends "templates/base_page.html" %} {% block content %}
+<link rel="stylesheet" href="/static/css/item.css" />
+<div class="item-info-page">
+	<div class="item-title-container">
+		<h1 class="item-title">Item</h1>
+	</div>
+	<div class="item-info-container">
+		<div class="item-image-container">
+			<img
+				src="http://img.gawkerassets.com/img/194efol5vh9xdjpg/original.jpg"
+				alt="" />
+		</div>
+		<div class="item-info-right-container">
+			<select class="item-use-type">
+				<option value="exchange">Exchange</option>
+				<option value="lend">Lend</option>
+				<option value="gift">Free Gift</option>
+			</select>
+			<div class="label-input">
+				<div for="">Owner</div>
+				<input type="text" id="owner" />
+			</div>
+			<div class="label-input">
+				<div for="">Category</div>
+				<input type="text" id="category" />
+			</div>
+			<div class="description-container">
+				<textarea placeholder="Item Description" id="item-description"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="item-comment-action-container">
+		<div class="item-comment-container">
+			<div class="item-comment">
+				<span class="author">Author</span> <span class="comment">
+					Comment Aghhhhhhhhhhhhhhhhhhhhhhhhhhaoisj
+					aspodfkpodsakfposkfdposkfdposkdfpksafdpksadpfoksapfdoksapkfpsakfdposakfpwokfdpwkdpqokdpwqkdpwqkdqpwkdqpkdpwdoiajdsohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
+				</span>
+			</div>
+			<div class="item-comment">
+				<span class="author">wangy12</span> <span class="comment">Too
+					expensive!!!!!!!!!!!!!</span>
+			</div>
+			<div class="item-comment">
+				<span class="author">mot</span> <span class="comment">I like
+					it!</span>
+			</div>
+		</div>
+		<div class="item-action-container">
+			<button id="item-action-btn">Submit</button>
+		</div>
+	</div>
+</div>
+{% endblock %}
