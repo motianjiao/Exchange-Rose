@@ -8,20 +8,23 @@ class User(ndb.Model):
     description = ndb.StringProperty()
     profile_photo_url = ndb.StringProperty()
     last_login_date_time = ndb.DateTimeProperty(auto_now=False)
+    media_blob_key = ndb.BlobKeyProperty()
     
 class Item(ndb.Model):
-    name = ndb.StringProperty()
+    title = ndb.StringProperty()
     category = ndb.StringProperty()
     description = ndb.StringProperty()
     purpose = ndb.StringProperty()
     status = ndb.StringProperty()
     owner = ndb.KeyProperty(kind=User)
+    upload_date_time = ndb.DateTimeProperty(auto_now=False)
+    media_blob_key = ndb.BlobKeyProperty()
     
 class Comment(ndb.Model):
     writer = ndb.KeyProperty(kind=User)
     item = ndb.KeyProperty(kind=Item)
     content = ndb.StringProperty()
-    data_time = ndb.DateTimeProperty()
+    date_time = ndb.DateTimeProperty()
 
 class Message(ndb.Model):
     sender = ndb.KeyProperty(kind=User)

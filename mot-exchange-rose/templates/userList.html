@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/static/css/user_list.css"/>
 <div class="user-list-container">
 	{% for user in user_query %}
-	<a href="/profile/view?email={{user.email}}">
+	<a href="/profile/viewPage?email={{user.email}}">
 		<div class="user-list-item-container">
 			<div class="panel-header">
 				<h3 class="user-full-name"> {{user.full_name}}</h3>

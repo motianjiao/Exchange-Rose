@@ -3,15 +3,17 @@ Created on Oct 13, 2016
 
 @author: mot
 '''
-from google.appengine.api import users
+import json
+
+
+from google.appengine.ext.webapp import blobstore_handlers
 import webapp2
 from webapp2_extras import sessions
 
 import main
-import json
 
 
-class RosefireHandler(webapp2.RequestHandler):
+class RosefireHandler(blobstore_handlers.BlobstoreUploadHandler):
     def dispatch(self):
         # Get a session store for this request.
         self.session_store = sessions.get_store(request=self.request)
@@ -42,7 +44,7 @@ class LoggedInPages(RosefireHandler):
             values = {"user_email": email,
                       "logout_url": "/rosefire-logout",
                       "user_type" : "rose",
-                      "profile_url": "/profile/edit"
+                      "profile_url": "/profile/editPage"
             }
         self.update_values(email, values)
         self.response.out.write(template.render(values))
@@ -56,7 +58,9 @@ class LoggedInPages(RosefireHandler):
     
     def get_template(self):
         return "templates/main_page.html"
-    
+
+
+
 
 class BaseAction(RosefireHandler):
     def post(self):

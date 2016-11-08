@@ -10,8 +10,6 @@ def create_user_from_email_if_not_exist(email):
     if not player:
         player = User(id=email, parent = get_parent_key_from_email(email), email=email)
         player.put()
-        print "qweprokqwpeofkpwoeqfkpqowekfpwqoekdpwqokdpo"
-        print str(player)
     return player
 
 def update_login_time(user):
@@ -31,6 +29,10 @@ def get_parent_key(user):
 
 def get_parent_key_from_email(email):
     return ndb.Key("Entity", email.lower())
+
+def get_user_key_from_email(email):
+    user = get_user_from_email(email);
+    return user.key;
 
 def update_user_info(user, values):
     for key in values:

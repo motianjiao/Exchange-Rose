@@ -12,17 +12,25 @@
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/static/css/main.css">
-  <link rel="stylesheet" href="/static/css/main_page.css"/>
-  <link rel="stylesheet" href="/static/css/profile.css"/>
-
   <!-- MDL and jQuery JS -->
   <script src="/static/js/jquery-2.2.3.min.js"></script>
   <script src="/static/js/global.js"></script>
   <!-- Custom JS -->
   <script type="text/javascript" src="/static/js/rosefire.js"></script>
   <script src="/static/js/main.js"></script>
+  <script src="/static/js/lodash.js"></script>
 
 </head>
+
+<script>
+	var profile = profile || {};
+	var item = item || {};
+	item.uploadUrl = "{{item_update_url}}";
+	console.log("item update url " + item.uploadUrl)
+	profile.userEmail = "{{user_email}}";
+	profile.uploadUrl = "{{profile_update_url}}"
+</script>
+
 
 <body>
   <div class="nav-container">
@@ -31,7 +39,7 @@
         <a href="/">Home</a>
       </li>
       <li class="nav-link">
-        <a href="/profile/list">Users</a>
+        <a href="/profile/listPage">Users</a>
       </li>
       <li class="login-btn">
        	{% if user_email and route == "/profile/edit" %}
@@ -39,8 +47,9 @@
       	 		<a href={{logout_url}}><span>Logout</span></a>
       	 	</button>
       	{% elif user_email %}
+      		{% set email = user_email.split("@")[0] %}
       		<button type="button" id="profile_link">
-      	 		<a href={{profile_url}}><span>{{user_email}}</span></a>
+      	 		<a href={{profile_url}}><span>{{email}}</span></a>
       	 	</button>
      	{% else %}
         	<button type="button" id="login-btn">

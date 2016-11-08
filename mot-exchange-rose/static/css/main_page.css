@@ -1,24 +1,34 @@
 body {
+	font-family: "Comic Sans MS", cursive, sans-serif;
+}
 
+#search-text {
+  margin: 8px 0 0 8px;
+  width: 25px;
+  height: 25px;
+  background: url("../images/search.png");
+  background-size: 25px 25px;
+  display: inline-block;
 }
 
 .main-page-body h1 {
   text-align: center;
-  font-family: monospace, sans-serif;
+  font-family: "Comic Sans MS", cursive, sans-serif;
   font-size: 3em;
   margin-bottom: 5px;
 }
 
 .filter-options div {
   display: inline-block;
-  width: 48%;
+  width: 60%;
   vertical-align: top;
 }
 
 .filter-left label {
   font-size: 1em;
-  font-family: monospace;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
+
 
 .filter-left input[type=text] {
   color: #888888;
@@ -31,6 +41,7 @@ body {
   margin-bottom: 20px;
   font-size: 1.4em;
   transition: border 0.2s;
+  vertical-align: top;ç
 }
 
 .filter-left input[type=text]:hover {
@@ -39,7 +50,7 @@ body {
 
 .filter-left label {
   font-size: 1.5em;
-  font-family: monospace;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .filter-left input[type=radio] {
@@ -56,6 +67,7 @@ body {
   margin-top: 2%;
   width: 90%;
   margin: auto;
+  height: 90vh;
 }
 
 .item {
@@ -64,21 +76,101 @@ body {
   margin-right: 1%;
   margin-top: 1%;
   border: 1px solid black;
+  border-radius: 6px;
+  height: 200px;
+  cursor: pointer;
 }
+
+.item {
+  background-color: #FEFEFE;	
+}
+
+.item:hover {
+  background-color: #EEEEEE;
+}
+
+.item-image-description-container {
+  height: 80%;
+  width: 100%;
+}
+
 
 .item .item-image-container {
   display: inline-block;
   width: 45%;
+  height: 100%;
 }
 
 .item .item-image-container img {
   width: 100%;
   height: 100%;
+  margin-top: 1%;
+  border-right: 2px solid #CCCCCC;
+  border-bottom: 2px solid #CCCCCC;
+  border-radius: 5px;
 }
 
 .item .item-info-container {
   display: inline-block;
-  width: 45%;
+  width: 40%;
   margin-left: 3%;
   vertical-align: top;
+  height: 100%;
+  margin-left: 10%;
+}
+
+.item-info-container span {
+	background-color: #eeeeee;
+	display: inline-block;
+	width: 48%;
+	border: 1px dashed #BBBBBB;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.item-info-container .item-title-container {
+	height: 18%;
+	width: 100%;
+}
+
+.item .item-info-container h2 {
+	margin: 0;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	font-size: 1.8em;
+	word-wrap: none;
+}
+
+.item-info-container > div {
+	height: 10%;
+	margin-top: 5%;
+}
+
+.item-info-container > div > label {
+	display: inline-block;
+	font-weight: bold;
+	width: 28%;
+	text-align: right;
+	margin-right: 20%;
+}
+
+.item-info-container .item-description {
+	height: 35%;
+	width: 100%;
+	overflow: hidden;
+	background-color: #EEEEEE;
+	border-radius: 5px;
+	border: 1px dashed #DDDDDD;
+}
+
+.item-description p {
+	margin: 5px 0 0 5px;
+	line-height: 17px;
+}
+
+.owner-info {
+	margin-top: 2%;
+	width: 100%;
+	font-size: 1.3em;
+	font-family: "Comic Sans MS", cursive, sans-serif;
+	margin-left: 5%;
 }

@@ -1,13 +1,12 @@
 {% extends "templates/base_page.html" %} {% block content %}
+  <link rel="stylesheet" href="/static/css/profile.css"/>
 <script src="/static/js/profile.js"></script>
-<script>
-	var profile = profile || {};
-	profile.userEmail = "{{user_email}}";
-</script>
+
     <div class="profile-page">
     <div class="personal-info-container">
       <div class="image-name-container">
-        <img src="http://img.gawkerassets.com/img/194efol5vh9xdjpg/original.jpg" alt="" />
+        <img src="/static/images/question.jpeg" alt="" />
+        <input type="file" id="profile-image">
         <input type="text" placeholder="Full Name" id="full-name"/>
       </div>
       <div class="personal-info-right-container">
@@ -33,9 +32,16 @@
       <textarea placeholder="Any description" id="user-description"></textarea>
     </div>
     <div class="btn-container">
+    	{% if user_email and route == "/profile/edit" %}
+    		<button type="button" id="create-new-item">
+      	 		<a href="/item/insertPage"><span>Post New Item</span></a>
+      	 	</button>
+      	 {% endif %}
+    
     	<button class="action-btn">Update</button>
+    </div>	
     </div>
-
-    </div>
+    
+    
 
 {% endblock %}

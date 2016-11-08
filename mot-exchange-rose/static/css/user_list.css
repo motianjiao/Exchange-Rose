@@ -2,7 +2,7 @@
 	width: 95%;
 	margin: auto;
 	font-size: 0.8em;
-	font-family: monospace, sans-serif;
+	font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 .user-list-container a {
@@ -39,7 +39,7 @@
 
 
 .user-list-item-container .panel-body > div {
-	font-family: sans-serif;
+	font-family: "Comic Sans MS", cursive, sans-serif;
 	margin-top: 3%;
 	font-size: 1.2em;
 	margin-left: 2%;

@@ -1,28 +1,30 @@
 {% extends "templates/base_page.html" %} {% block content %}
 <link rel="stylesheet" href="/static/css/item.css" />
+<script src="/static/js/item.js"></script>
 <div class="item-info-page">
 	<div class="item-title-container">
-		<h1 class="item-title">Item</h1>
+		<input id="item-title" placeholder="Title Here">
 	</div>
 	<div class="item-info-container">
 		<div class="item-image-container">
 			<img
-				src="http://img.gawkerassets.com/img/194efol5vh9xdjpg/original.jpg"
+				src="/static/images/question.jpeg"
 				alt="" />
+			<input type="file" id="item-image"/>
 		</div>
 		<div class="item-info-right-container">
-			<select class="item-use-type">
+			<select id="item-purpose">
 				<option value="exchange">Exchange</option>
 				<option value="lend">Lend</option>
 				<option value="gift">Free Gift</option>
 			</select>
 			<div class="label-input">
 				<div for="">Owner</div>
-				<input type="text" id="owner" />
+				<input type="text" id="item-owner" disabled/>
 			</div>
 			<div class="label-input">
 				<div for="">Category</div>
-				<input type="text" id="category" />
+				<input type="text" id="item-category" />
 			</div>
 			<div class="description-container">
 				<textarea placeholder="Item Description" id="item-description"></textarea>
@@ -31,23 +33,21 @@
 	</div>
 	<div class="item-comment-action-container">
 		<div class="item-comment-container">
-			<div class="item-comment">
-				<span class="author">Author</span> <span class="comment">
-					Comment Aghhhhhhhhhhhhhhhhhhhhhhhhhhaoisj
-					aspodfkpodsakfposkfdposkfdposkdfpksafdpksadpfoksapfdoksapkfpsakfdposakfpwokfdpwkdpqokdpwqkdpwqkdqpwkdqpkdpwdoiajdsohhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh
-				</span>
-			</div>
-			<div class="item-comment">
-				<span class="author">wangy12</span> <span class="comment">Too
-					expensive!!!!!!!!!!!!!</span>
-			</div>
-			<div class="item-comment">
-				<span class="author">mot</span> <span class="comment">I like
-					it!</span>
-			</div>
 		</div>
 		<div class="item-action-container">
 			<button id="item-action-btn">Submit</button>
+			<button id="item-delete-btn" disabled>Delete</button>
+		</div>
+	</div>
+
+</div>
+<div id="center-point">
+	<div id="comment-dialog">
+		<h2 id="comment-title">Add a comment</h2>
+		<textarea id="comment" placeholder="comment"></textarea>
+		<div class="comment-btn-container">
+			<button id="comment-submit-btn">Submit</button>
+			<button id="comment-cancel-btn">Cancel</button>
 		</div>
 	</div>
 </div>
