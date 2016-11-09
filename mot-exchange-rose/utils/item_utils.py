@@ -84,8 +84,12 @@ def item_to_dict(item):
     dic["media_blob_key"] = str(dic["media_blob_key"]);
     return dic;
 
-def get_items(offset, limit):
-    item_query = Item.query().order()
+def get_items(offset, limit, email):
+    if (email):
+        key = get_user_key_from_email(email)
+        item_query = Item.query(Item.owner == key).order()
+    else:
+        item_query = Item.query().order()
     result = [];
     for item in item_query:
         result.append(item_to_dict(item));

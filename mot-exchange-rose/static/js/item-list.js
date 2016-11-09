@@ -37,8 +37,11 @@ itemList.limit = 20;
 itemList.offset = 0;
 
 $(document).ready(function() {
+	var params = getUrlVars();
+	console.log(params)
+	itemList.email = params.email || ""
 	$.ajax({
-		url: "/item/getItems?limit=" + itemList.limit + "&offset=" + itemList.offset,
+		url: "/item/getItems?limit=" + itemList.limit + "&offset=" + itemList.offset + "&email=" + itemList.email,
 		type: "GET",
 		dataType : "json"
 	})

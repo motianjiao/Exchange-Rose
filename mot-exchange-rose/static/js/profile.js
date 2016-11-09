@@ -3,6 +3,7 @@ var profile = profile || {};
 $(document).ready(function(){
 	if (window.location.pathname === "/profile/editPage" && profile.userEmail) {
 		profile.enableButtons()
+		profile.enableViewItemsButton(profile.userEmail)
 		profile.fetchUserInfo(profile.userEmail)
 	} else if (window.location.pathname.startsWith("/profile/viewPage")){
 		profile.disableButtons()
@@ -11,6 +12,8 @@ $(document).ready(function(){
 			window.location = "/profile/editPage"
 		} else if (params.email) {
 			profile.fetchUserInfo(params.email);
+			profile.enableViewItemsButton(params.email)
+			profile.hideUpdateButton()
 		} else {
 			alert("error parsing user email")
 		}
@@ -18,11 +21,20 @@ $(document).ready(function(){
 })
 
 profile.disableButtons = function() {
-	$(".action-btn").html("View Items")
 	$("#contact").prop('disabled', true);
 	$("#address").prop('disabled', true);
 	$("#full-name").prop('disabled', true);
 	$("#user-description").prop('disabled', true);
+}
+
+profile.enableViewItemsButton = function(email) {
+	$("#view-items-btn").click(function() {
+		window.location = "/?email=" + email;
+	})
+}
+
+profile.hideUpdateButton = function() {
+	$(".action-btn").hide()
 }
 
 profile.fetchUserInfo = function(email) {

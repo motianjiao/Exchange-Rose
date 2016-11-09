@@ -172,7 +172,12 @@ item.enableViewPage = function(itemLink) {
 	$("#item-description").prop('disabled', true);
 	$("#item-action-btn").html("Add Comment");
 	$("#item-action-btn").click(function() {
-		$("#comment-dialog").fadeToggle();
+		if (profile.userEmail) {
+			$("#comment-dialog").fadeToggle();
+		} else {
+			$("#login-btn").click();
+		}
+		
 	})
 	$("#comment-cancel-btn").click(function() {
 		$("#comment-dialog").fadeOut();

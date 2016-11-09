@@ -264,9 +264,8 @@ class GetItems(webapp2.RequestHandler):
     def get(self):
         limit = self.request.get("limit");
         offset = self.request.get("offset");
-        print limit;
-        print offset;
-        item_query = get_items(offset, limit)
+        email = self.request.get("email")
+        item_query = get_items(offset, limit, email)
         obj = {};
         if item_query:
             obj["success"] = True
